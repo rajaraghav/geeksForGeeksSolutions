@@ -55,10 +55,11 @@ public class Search_an_element_in_a_sorted_and_rotated_array {
     public static void main(String[] args) {
         int a [] ={3,5,6,7,1,2};
         Search_an_element_in_a_sorted_and_rotated_array obj= new Search_an_element_in_a_sorted_and_rotated_array();
-        int key = 2;
+        int key = 6;
         int pivot = obj.findPivot(a,0,a.length-1);
         int index = obj.binarySearch(a,0,pivot,key);
-        index = Math.max(index,obj.binarySearch(a,0,pivot,key));
+
+
         if(index==-1)
         {
             System.out.println("not found");
@@ -68,6 +69,19 @@ public class Search_an_element_in_a_sorted_and_rotated_array {
             System.out.println("found at"+index);
         }
         else
+        {
+            index = obj.findPivot(a,pivot+1,a.length-1);
+            if(index==-1)
+            {
+                System.out.println("not found");
+            }
+            else if(a[index]==key)
+            {
+                System.out.println("found at"+index);
+            }
+            else
             System.out.println("not found");
+        }
+
     }
 }
